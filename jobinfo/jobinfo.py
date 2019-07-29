@@ -140,3 +140,4 @@ if __name__ == "__main__":
     search_list = jobs.jobs_search_by('Date', search_value)
     for ss in search_list:
         print(ss)
+

@@ -137,3 +137,4 @@ if __name__ == '__main__':
     frame2 = DialogFrame(jobs, 'Searched List')
 
     app.MainLoop()
+
