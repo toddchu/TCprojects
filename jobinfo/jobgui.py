@@ -1,5 +1,6 @@
 import subprocess
 import wx
+from operator import itemgetter
 from jobinfo import JobInfo
 
 
@@ -14,7 +15,8 @@ class MyTable(wx.Panel):
         main_sizer = wx.BoxSizer(wx.VERTICAL)
         self.row_obj_dict = {}
 
-        self.list_ctrl = wx.ListCtrl(self, size=(-1, 500), style=wx.LC_REPORT | wx.BORDER_SUNKEN)
+        self.list_ctrl = wx.ListCtrl(self, size=(-1, 500),
+                                     style=wx.LC_REPORT | wx.BORDER_SUNKEN)
 
         self.list_ctrl.InsertColumn(0, '#', width=30)
         self.list_ctrl.InsertColumn(1, 'Date', width=80)
@@ -42,7 +44,8 @@ class MyTable(wx.Panel):
             self.list_ctrl.DeleteAllItems()
             self.reverse_sort_flag[i] = not self.reverse_sort_flag[i]
 
-            self.name_list.sort(key=lambda x: x[i], reverse=self.reverse_sort_flag[i])
+            #self.name_list.sort(key=lambda x: x[i], reverse=self.reverse_sort_flag[i])
+            self.name_list.sort(key=itemgetter(i), reverse=self.reverse_sort_flag[i])
             self.show_list()
 
     def row_press(self, event):
@@ -95,7 +98,8 @@ class MyTable(wx.Panel):
 
 class DisplayFrame(wx.Frame):
     def __init__(self, jobs_head, title_str, sub_frame=False):
-        super().__init__(parent=None, title=title_str, size=(600, 600))
+        super().__init__(parent=None, title=title_str, size=(600, 600),
+                         style=wx.DEFAULT_FRAME_STYLE | wx.STAY_ON_TOP)
 
         self.panel = MyTable(self, jobs_head, sub_frame)
         self.Show()
@@ -107,7 +111,9 @@ class DialogFrame(wx.Frame):
         self.title_str = title_str
         self.search_value = ''
 
-        super().__init__(parent=None, title="Enter Company Name to Search For", pos=(600, 500), size=(400, 120))
+        super().__init__(parent=None, title="Enter Company Name to Search For",
+                         pos=(600, 500), size=(400, 120),
+                         style=wx.DEFAULT_FRAME_STYLE | wx.STAY_ON_TOP)
 
         panel = wx.Panel(self)
         my_sizer = wx.BoxSizer(wx.VERTICAL)
@@ -132,9 +138,8 @@ class DialogFrame(wx.Frame):
 if __name__ == '__main__':
     app = wx.App()
 
-    jobs = JobInfo("c:\\Users\\toddd\\Home\\MyGit\\TCprojects\\jobinfo\\JobApplied")
+    jobs = JobInfo("c:\\Users\\toddd\\Home\\Todd\\Resume\\JobApplied")
     frame1 = DisplayFrame(jobs, 'Jobs Applied Table (Long Form)')
     frame2 = DialogFrame(jobs, 'Searched List')
 
     app.MainLoop()
-

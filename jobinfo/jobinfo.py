@@ -116,8 +116,10 @@ class JobInfo(JobApplied):
                 if date is not None:
                     for r, d, fs in os.walk(folder_name):
                         for f in fs:
-                            # file_name = os.path.join(r, f)
-                            self.job_applied.new(r, f)
+                            if 'A' <= f[0].upper() <= 'Z' or '0' <= f[0] <= '9':  # Ignore the App metadata files
+                                # file_name = os.path.join(r, f)
+                                p = self.job_applied.new(r, f)
+                                #print(p)
 
     @staticmethod
     def check_folder(folder_name):
@@ -128,7 +130,7 @@ class JobInfo(JobApplied):
 
 
 if __name__ == "__main__":
-    jobs = JobInfo("c:\\Users\\toddd\\Home\\MyGit\\TCprojects\\jobinfo\\JobApplied")
+    jobs = JobInfo("c:\\Users\\toddd\\Home\\Todd\\Resume\\JobApplied")
 
     sort_list = jobs.jobs_sorted_by("Company")
     for ss in sort_list:
@@ -140,4 +142,3 @@ if __name__ == "__main__":
     search_list = jobs.jobs_search_by('Date', search_value)
     for ss in search_list:
         print(ss)
-
