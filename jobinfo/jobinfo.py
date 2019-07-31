@@ -117,7 +117,7 @@ class JobInfo(JobApplied):
                     for r, d, fs in os.walk(folder_name):
                         for f in fs:
                             if 'A' <= f[0].upper() <= 'Z' or '0' <= f[0] <= '9':  # Ignore the App metadata files
-                                # file_name = os.path.join(r, f)
+                                f, e = os.path.splitext(f)    # split the file name and extension
                                 p = self.job_applied.new(r, f)
                                 #print(p)
 
