@@ -8,7 +8,7 @@ class MyTable(wx.Panel):
     def __init__(self, parent, jobs_head, sub_frame):
         self.jobs_head = jobs_head
         self.name_list = self.get_sorted_list('Date', sub_frame)
-        self.reverse_sort_flag = [True, False, True, True, True, True]
+        self.reverse_sort_flag = [True, False, True, True, True, True, True]
         self.index = -1     # Must initialized to be -1!!!!
 
         super().__init__(parent)
@@ -24,6 +24,7 @@ class MyTable(wx.Panel):
         self.list_ctrl.InsertColumn(3, 'Position', width=240)
         self.list_ctrl.InsertColumn(4, 'Folder', width=240)
         self.list_ctrl.InsertColumn(5, 'File', width=240)
+        self.list_ctrl.InsertColumn(6, 'Ext', width=50)
         main_sizer.Add(self.list_ctrl, 0, wx.ALL | wx.EXPAND, 5)
 
         self.show_list()
@@ -40,7 +41,7 @@ class MyTable(wx.Panel):
 
     def col_press(self, event):
         i = event.GetColumn()
-        if 1 <= i <= 5:
+        if 1 <= i <= 6:
             self.list_ctrl.DeleteAllItems()
             self.reverse_sort_flag[i] = not self.reverse_sort_flag[i]
 
@@ -54,16 +55,12 @@ class MyTable(wx.Panel):
     def row_double_press(self, event):
         if self.index != -1:
             folder_name = self.name_list[self.index][4]
-            name_items = self.name_list[self.index][5].split('.')
-            file_ext = name_items.pop(-1)
-
-            f = ''
-            for item in name_items:
-                f += item + '.'
-            file_name = f.strip('.')     # remove the last '.'
+            file_name = self.name_list[self.index][5]
+            file_ext = self.name_list[self.index][6]
 
             # Open DOC with its default desktop App
-            cmd = f'{folder_name}\\"{file_name}".{file_ext}'
+            cmd = f'{folder_name}\\"{file_name}"{file_ext}'
+            print("TC", cmd)
             subprocess.Popen(cmd, shell=True, stderr=subprocess.PIPE)
 
             self.index = -1
@@ -84,6 +81,7 @@ class MyTable(wx.Panel):
             self.list_ctrl.SetItem(index, 3, name[3])
             self.list_ctrl.SetItem(index, 4, name[4])
             self.list_ctrl.SetItem(index, 5, name[5])
+            self.list_ctrl.SetItem(index, 6, name[6])
             index += 1
             row_cnt += 1
 

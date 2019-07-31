@@ -7,9 +7,10 @@ class JobApplied:
     jobs_searched_list = []
     jobs_search_value = ''
 
-    def __init__(self, folder_name, file_name):
+    def __init__(self, folder_name, file_name, file_ext):
         self.folder_name = folder_name
         self.file_name = file_name
+        self.file_ext = file_ext
         self.company = ''
         self.apply_date = ''
         self.position = ''
@@ -29,8 +30,8 @@ class JobApplied:
             self.position = match.group(3).strip(' ')
 
     @staticmethod
-    def new(folder_name, file_name):
-        p = JobApplied(folder_name, file_name)
+    def new(folder_name, file_name, file_ext):
+        p = JobApplied(folder_name, file_name, file_ext)
         JobApplied.jobs_list.append(p)
         return p
 
@@ -101,12 +102,12 @@ class JobApplied:
         return JobApplied.jobs_search_value
 
     def __repr__(self):
-        return f"{self.apply_date}, {self.company}, {self.position}, {self.folder_name}, {self.file_name}"
+        return f"{self.apply_date}, {self.company}, {self.position}, {self.folder_name}, {self.file_name}, {self.file_ext}"
 
 
 class JobInfo(JobApplied):
     def __init__(self, path):
-        self.job_applied = JobApplied("HEAD", "HEAD")
+        self.job_applied = JobApplied("HEAD", "HEAD", "HEAD")
 
         for root, dirs, files in os.walk(path):
             for dd in dirs:
@@ -118,7 +119,7 @@ class JobInfo(JobApplied):
                         for f in fs:
                             if 'A' <= f[0].upper() <= 'Z' or '0' <= f[0] <= '9':  # Ignore the App metadata files
                                 f, e = os.path.splitext(f)    # split the file name and extension
-                                p = self.job_applied.new(r, f)
+                                p = self.job_applied.new(r, f, e)
                                 #print(p)
 
     @staticmethod
