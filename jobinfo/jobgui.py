@@ -136,7 +136,7 @@ class DialogFrame(wx.Frame):
 if __name__ == '__main__':
     app = wx.App()
 
-    jobs = JobInfo("c:\\Users\\toddd\\Home\\Todd\\Resume\\JobApplied")
+    jobs = JobInfo("c:\\Users\\toddd\\Home\\MyGit\\TCprojects\\jobinfo\\JobApplied")
     frame1 = DisplayFrame(jobs, 'Jobs Applied Table (Long Form)')
     frame2 = DialogFrame(jobs, 'Searched List')
 
