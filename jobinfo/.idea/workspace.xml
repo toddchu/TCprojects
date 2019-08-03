@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jobinfo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2414">
-              <caret line="143" selection-start-line="143" selection-end-line="143" />
+            <state relative-caret-position="2448">
+              <caret line="145" selection-start-line="145" selection-end-line="145" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -28,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/jobgui.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="759">
-              <caret line="140" selection-start-line="140" selection-end-line="140" />
+              <caret line="143" selection-start-line="143" selection-end-line="143" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -57,8 +57,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="907" />
-    <option name="y" value="5" />
+    <option name="x" value="898" />
+    <option name="y" value="100" />
     <option name="width" value="970" />
     <option name="height" value="1042" />
   </component>
@@ -144,7 +144,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="907" y="5" width="970" height="1042" extended-state="0" />
+    <frame x="898" y="100" width="970" height="1042" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
@@ -191,8 +191,8 @@
     <entry file="file://$PROJECT_DIR$/../regex_babynames/babynames.py" />
     <entry file="file://$PROJECT_DIR$/jobinfo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2414">
-          <caret line="143" selection-start-line="143" selection-end-line="143" />
+        <state relative-caret-position="2448">
+          <caret line="145" selection-start-line="145" selection-end-line="145" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -202,7 +202,7 @@
     <entry file="file://$PROJECT_DIR$/jobgui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
+          <caret line="143" selection-start-line="143" selection-end-line="143" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
